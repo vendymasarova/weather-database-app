@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-env node */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.tsx",
+  mode: 'development',
+  entry: './src/index.tsx',
   devtool: 'inline-source-map',
   devServer: {
     open: true,
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve("dist"),
+    path: path.resolve('dist'),
     publicPath: '/',
     clean: true,
   },
@@ -29,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      template: './index.html',
     }),
   ],
 }

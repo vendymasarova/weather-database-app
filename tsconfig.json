@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "baseUrl": ".",
-    "allowSyntheticDefaultImports": true
-  },
+		"outDir": "./dist/",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"module": "es6",
+		"target": "es5",
+		"jsx": "react-jsx",
+		"moduleResolution": "node",
+		"allowJs": true,
+		"baseUrl": ".",
+		"allowSyntheticDefaultImports": true
+	},
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]
 }
