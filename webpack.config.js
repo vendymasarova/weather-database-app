@@ -1,28 +1,35 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.js"),
+  mode: "development",
+  entry: "./src/index.tsx",
+  devtool: 'inline-source-map',
+  devServer: {
+    open: true,
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    filename: 'bundle.js',
+    path: path.resolve("dist"),
+    publicPath: '/',
+    clean: true,
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.?js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        },
+        use: 'ts-loader'
       },
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html"),
+      template: "./index.html",
     }),
   ],
 }
