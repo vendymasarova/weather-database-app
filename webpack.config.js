@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-env node */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -12,7 +10,7 @@ module.exports = {
     hot: true,
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[fullhash].js',
     path: path.resolve('dist'),
     publicPath: '/',
     clean: true,
