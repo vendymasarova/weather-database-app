@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { StyledInput, StyledForm } from './SearchForm-styles';
 
 const API_KEY = 'jxSSnAhuGlxjA1SX9E99lGf9pYFeFf1x';
@@ -17,7 +18,9 @@ interface SuggestionsProps {
 
 export const SearchForm = () => {
 	const [input, setInput] = useState<string>('');
+  const navigate = useNavigate();
 	const [suggestions, setSuggestions] = useState<SuggestionsProps[]>();
+  const [result, setResult] = useState<SuggestionsProps[]>();
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -37,6 +40,7 @@ export const SearchForm = () => {
 			);
 			const data = await response.json();
 			setSuggestions(data);
+
 		} catch (error) {
 			console.log(error);
 		}
@@ -44,7 +48,10 @@ export const SearchForm = () => {
 
 	const onSubmit = (e: any) => {
 		e.preventDefault();
-		console.log('suggestions');
+    
+    setResult(suggestions)
+    console.log(result)
+    navigate("/" + input)
 	};
 
 	return (

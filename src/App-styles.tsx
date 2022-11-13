@@ -18,12 +18,6 @@ export const StyledBody = styled.div`
   min-height: 100vh;
 `
 
-export const StyledTitle = styled.h1`
-  color: #fff;
-  margin-bottom: 100px;
-  font-size: 40px;
-`
-
 export const StyledGrid= styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);

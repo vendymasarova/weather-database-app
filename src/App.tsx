@@ -1,18 +1,13 @@
-import { SearchForm } from './components/SearchForm/SearchForm';
-import { StyledWrapper, StyledContainer, StyledBody, StyledTitle, StyledGrid } from './App-styles';
-import { Card } from './components/SearchForm/Card/Card';
+import { BrowserRouter } from 'react-router-dom';
+import { StyledWrapper, StyledContainer } from './App-styles';
+import Pages from './Pages/Pages';
 
 export const App = () => (
 	<StyledWrapper>
 		<StyledContainer>
-			<StyledBody>
-				<StyledTitle>Najdi své oblíbené město</StyledTitle>
-				<SearchForm />
-        <StyledGrid>
-          <Card title="Praha" color="#fff"/>
-          <Card title="Loket" color="#fff"/>
-        </StyledGrid>
-			</StyledBody>
+			<BrowserRouter>
+				<Pages />
+			</BrowserRouter>
 		</StyledContainer>
 	</StyledWrapper>
 );
