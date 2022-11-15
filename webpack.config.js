@@ -8,6 +8,7 @@ module.exports = {
   devServer: {
     open: true,
     hot: true,
+    historyApiFallback: true,
   },
   output: {
     filename: '[name].[fullhash].js',

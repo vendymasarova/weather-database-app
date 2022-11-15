@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledInput = styled.input`
   width: 100%;
@@ -11,8 +11,8 @@ export const StyledInput = styled.input`
   outline: none;
   font-size: 20px;
   color: #f5f5f5;
-`
+`;
 
 export const StyledForm = styled.form`
   width: 100%;
-`
+`;
