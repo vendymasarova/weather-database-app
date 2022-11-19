@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { StyledInput, StyledForm } from './SearchForm-styles';
+import { StyledInput, StyledForm, StyledList, StyledItem } from './SearchForm-styles';
 
 const API_KEY = 'jxSSnAhuGlxjA1SX9E99lGf9pYFeFf1x';
 
@@ -73,28 +73,25 @@ export const SearchForm = () => {
       name,
       key
     });
+    setSuggestions([]);
   };
-
-  useEffect(() => {
-    console.log(selectedValues);
-  }, [selectedValues]);
 
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInput list='suggestion' value={input} onChange={(e) => setInput(e.target.value)} />
       {suggestions ? (
-        <ul id='suggestion'>
+        <StyledList id='suggestion'>
           {suggestions.map((item: SuggestionsProps) => (
-            <li
+            <StyledItem
               key={item.Key}
               onClick={() =>
                 handleClick(item.LocalizedName, item.Key, item.AdministrativeArea.LocalizedName)
               }
             >
               {item.LocalizedName}, {item.AdministrativeArea.LocalizedName}
-            </li>
+            </StyledItem>
           ))}
-        </ul>
+        </StyledList>
       ) : null}
     </StyledForm>
   );
