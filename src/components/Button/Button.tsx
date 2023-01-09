@@ -2,9 +2,16 @@
 
 import { StyledButton } from './Button-styles';
 
-const Button = (onSubmitFn: any) => {
+interface Props {
+  onSubmit?: any;
+  text?: string;
+  onClick?: any;
+  disabled?: boolean;
+}
+
+const Button = ({ onSubmit, text }: Props) => {
   return (
-    <StyledButton onSubmit={onSubmitFn}>Button</StyledButton>
+    <StyledButton onSubmit={onSubmit}>{text}</StyledButton>
   );
 };
 

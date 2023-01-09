@@ -94,7 +94,7 @@ export const SearchForm = () => {
           ))}
         </StyledList>
       ) : null}
-      <Button onSubmit={onSubmit}/>
+      <Button onSubmit={onSubmit} text="button"/>
     </StyledForm>
   );
 };

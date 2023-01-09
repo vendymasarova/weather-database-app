@@ -7,6 +7,9 @@ import { StyledBody, StyledGrid } from '../../App-styles';
 // import Icon from '../../images/22.png';
 import moment from 'moment';
 import { FavouriteBtn } from '../../components/FavouriteBtn/FavouriteBtn';
+import Button from '../../components/Button/Button';
+import Modal from '../../components/Modal/Modal';
+import BackroundBlur from '../../components/BackroundBlur/BackroundBlur';
 
 const API_KEY = 'jxSSnAhuGlxjA1SX9E99lGf9pYFeFf1x';
 
@@ -33,6 +36,7 @@ export const Forecast = () => {
   const [savedForecast, setSavedForecast] = useState<savedForecastProps>();
   const [city, setCity] = useState<string>();
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const params = useParams();
 
   console.log(forecast);
@@ -45,6 +49,13 @@ export const Forecast = () => {
   useEffect(() => {
     void getForecast();
   }, []);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 3000);
+  };
 
   const getForecast = async () => {
     try {
@@ -72,6 +83,8 @@ export const Forecast = () => {
       myFavouriteForecastArr.push(savedForecast);
     }
     localStorage.setItem('myFavouriteForecastArr', JSON.stringify(myFavouriteForecastArr));
+
+    showModal();
   };
 
   return (
@@ -95,9 +108,15 @@ export const Forecast = () => {
               </Card>
             </>
           ))}
-          <button disabled={isDisabled} onClick={() => saveToFavorites(params.key, forecast?.DailyForecasts)}>Uložit do oblíbených</button>
+          <button disabled={isDisabled} onClick={() => saveToFavorites(params.key, forecast?.DailyForecasts)}>Uložit</button>
         </StyledGrid>
       </Card>
+      {isModalOpen && (
+        <>
+        <BackroundBlur />
+        <Modal text="Uloženo do oblíbených"/>
+        </>
+      )}
     </StyledBody>
   );
 };
