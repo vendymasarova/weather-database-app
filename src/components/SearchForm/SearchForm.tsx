@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button/Button';
 import { StyledInput, StyledForm, StyledList, StyledItem } from './SearchForm-styles';
 
 const API_KEY = 'jxSSnAhuGlxjA1SX9E99lGf9pYFeFf1x';
@@ -79,7 +80,7 @@ export const SearchForm = () => {
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInput list='suggestion' value={input} onChange={(e) => setInput(e.target.value)} />
-      {suggestions ? (
+      {suggestions?.length ? (
         <StyledList id='suggestion'>
           {suggestions.map((item: SuggestionsProps) => (
             <StyledItem
@@ -93,6 +94,7 @@ export const SearchForm = () => {
           ))}
         </StyledList>
       ) : null}
+      <Button onSubmit={onSubmit}/>
     </StyledForm>
   );
 };
